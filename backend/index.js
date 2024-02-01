@@ -38,7 +38,7 @@ app.post('/api/content', async (req, res) => {
 app.get('/', async (req, res) => {
   try {
     const allContent = await Content.find();
-    res.status(200).json({ content: allContent });
+    res.json(allContent);
   } catch (error) {
     console.error('Error fetching content:', error);
     res.status(500).json({ error: 'Internal Server Error' });
