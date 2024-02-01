@@ -35,6 +35,16 @@ app.post('/api/content', async (req, res) => {
 });
 
 // API endpoint for retrieving all submitted content
+app.get('/', async (req, res) => {
+  try {
+    const allContent = await Content.find();
+    res.status(200).json({ content: allContent });
+  } catch (error) {
+    console.error('Error fetching content:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 app.get('/api/content', async (req, res) => {
   try {
     const allContent = await Content.find();
